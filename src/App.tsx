@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { CustomizedAccordions as Accordion } from "./components/Accordion/Accordion";
+import { javascript_questions } from "./config/javascript";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const darkTheme = createTheme({
+        palette: {
+            mode: "dark",
+        },
+    });
+    return (
+        <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            <Accordion list={javascript_questions} />
+        </ThemeProvider>
+    );
 }
 
 export default App;
